@@ -131,7 +131,7 @@ function buildDefaults(): SettingsState {
 }
 
 export function SettingsModal({ onClose }: { onClose?: () => void }) {
-  const defaults = useMemo(buildDefaults, []);
+  const defaults = useMemo(() => buildDefaults(), []);
   const [state, setState] = useState<SettingsState>(defaults);
   const [flashKeys, setFlashKeys] = useState<Record<string, number>>({});
   const flashCounter = useRef(0);
@@ -161,10 +161,10 @@ export function SettingsModal({ onClose }: { onClose?: () => void }) {
   }, [onClose]);
 
   return (
-    <div className="modal animate-modal-in w-[min(36rem,92vw)] p-7 sm:p-9">
+    <div className="modal animate-modal-in w-[min(34rem,92vw)] p-6 sm:p-7">
       {/* En-tête : titre + bouton close */}
-      <div className="flex items-start justify-between gap-4">
-        <h1 className="text-4xl sm:text-[2.75rem] font-extrabold tracking-tight leading-none">
+      <div className="flex items-center justify-between gap-4">
+        <h1 className="text-2xl sm:text-[1.75rem] font-extrabold tracking-tight leading-none">
           Paramètres
         </h1>
         <button
@@ -173,16 +173,16 @@ export function SettingsModal({ onClose }: { onClose?: () => void }) {
           onClick={onClose}
           className="modal-close"
         >
-          <CloseIcon />
+          <CloseIcon size={14} />
         </button>
       </div>
 
       {/* Divider sous le titre */}
-      <div className="modal-divider mt-6" />
+      <div className="modal-divider mt-5" />
 
       {/* Liste scrollable des sections */}
       <div
-        className="mt-6 flex flex-col gap-7 max-h-[60vh] overflow-y-auto pr-1"
+        className="mt-5 flex flex-col gap-6 max-h-[60vh] overflow-y-auto pr-1"
         style={{ scrollbarWidth: "thin", scrollbarColor: "#1c2a3e transparent" }}
       >
         {SECTIONS.map((section) => (
