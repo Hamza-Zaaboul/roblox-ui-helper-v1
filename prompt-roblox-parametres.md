@@ -63,7 +63,7 @@ Recopie **exactement** le tableau `SECTIONS` du HTML (lignes ~576-652). Mêmes I
 | `backdrop-filter: blur(20px)` | `Lighting.BlurEffect` global ou fond pré-blurré (voir §6 limitations) |
 | `padding` | `UIPadding` |
 | `gap` (flex/grid) | `UIListLayout.Padding` |
-| `font-family: Geist` | Custom Font asset Geist (importer en Studio) |
+| `font-family: Any` | Custom Font asset  (importer en Studio) |
 | `font-weight` | `Font.Weight` (Bold/SemiBold/ExtraBold) |
 | `cubic-bezier(0.22, 1, 0.36, 1)` "out-soft" | `TweenInfo.new(d, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)` |
 | `cubic-bezier(0.34, 1.56, 0.64, 1)` "spring" | `TweenInfo.new(d, Enum.EasingStyle.Back, Enum.EasingDirection.Out)` |
