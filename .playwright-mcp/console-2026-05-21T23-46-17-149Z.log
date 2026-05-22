@@ -1,0 +1,46 @@
+[     320ms] [LOG] ℹ️ Discourse v3.5.0.beta3-dev — https://github.com/discourse/discourse/commits/2a26555a7a — Ember v5.12.0 @ https://doy2mn9upadnk.cloudfront.net/assets/chunk.02742ea6c3201dd77409.d41d8cd9.js:114
+[     435ms] [LOG] ✅  Using the new 'glimmer' topic list @ https://doy2mn9upadnk.cloudfront.net/assets/chunk.02742ea6c3201dd77409.d41d8cd9.js:128
+[     485ms] [LOG] ✅  Using the new 'glimmer' post menu! @ https://doy2mn9upadnk.cloudfront.net/assets/chunk.02742ea6c3201dd77409.d41d8cd9.js:22
+[     585ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://devforum.roblox.com/t/new-ui-that-i-made/2802274:0
+[     765ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://d348twzf7a8p5.cloudfront.net/locales/33571f1f0ff3752d3401a58cbb579615ed798dce/en-us/Feature.Privacy.json:0
+[     775ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     775ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     779ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     779ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     780ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     781ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     794ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     794ms] [WARNING] Deprecation notice: use injected siteSettings instead of Discourse.SiteSettings [deprecated since Discourse 2.8] [removal in Discourse 3.2] [deprecation id: discourse.global.site-settings] @ https://d348twzf7a8p5.cloudfront.net/33571f1f0ff3752d3401a58cbb579615ed798dce/vendors.bundle.js:1
+[     909ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://apis.roblox.com/access-management/v1/upsell-feature-access?nameSpace=studio/CollaborationSettings&featureName=ShouldShowDevForumBanner:0
+[     910ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://users.roblox.com/v1/users/authenticated:0
+[    1470ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://apis.roblox.com/rotating-client-service/v1/prelude/latest:0
+[    1524ms] [LOG] WARNING: Tried to load AngularJS more than once. @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1552ms] [WARNING] The namespace Purchasing.PurchaseDialog was not found @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1637ms] [LOG] 
+      _______      _________      _____       ______     _
+     / _____ \    |____ ____|    / ___ \     | ____ \   | |
+    / /     \_\       | |       / /   \ \    | |   \ \  | |
+    | |               | |      / /     \ \   | |   | |  | |
+    \ \______         | |      | |     | |   | |___/ /  | |
+     \______ \        | |      | |     | |   |  ____/   | |
+            \ \       | |      | |     | |   | |        | |
+     _      | |       | |      \ \     / /   | |        |_|
+    \ \_____/ /       | |       \ \___/ /    | |         _
+     \_______/        |_|        \_____/     |_|        |_|
+
+     Keep your account safe! Do not send any information from
+     here to anyone or paste any text here.
+
+     If someone is asking you to copy or paste text here then
+     you're giving someone access to your account, your gear,
+     and your Robux.
+
+     To learn more about keeping your account safe you can go to
+
+     https://www.roblox.com/info/account-safety @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1640ms] [WARNING] The namespace CommonUI.Messages was not found @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1641ms] [WARNING] The namespace Feature.Tracking was not found @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1644ms] [WARNING] The namespace Feature.Friends was not found @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1921ms] [WARNING] The translation key 'Description.CookieBannerContent' not found. Please check for a missing string or a typo. @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1922ms] [WARNING] The translation key 'Description.PrivacyPolicy' not found. Please check for a missing string or a typo. @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0
+[    1922ms] [WARNING] The translation key 'Action.SetCookieOptions' not found. Please check for a missing string or a typo. @ https://js.rbxcdn.com/de7063d3320bfcbf6356e3b749302f3d52d6024125e3f0e6f3ff5fc37b1dc1e5-Sentry.js:0

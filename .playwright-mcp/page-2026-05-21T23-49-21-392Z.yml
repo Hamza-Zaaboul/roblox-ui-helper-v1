@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic:
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic:
+        - img
+    - generic [ref=e3]:
+      - generic [ref=e4]: Settings
+      - button "Fermer" [ref=e5]:
+        - img [ref=e6]
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - generic [ref=e10]:
+            - text: Shadows
+            - switch "Shadows activé" [checked] [ref=e11]
+        - listitem [ref=e13]:
+          - generic [ref=e14]:
+            - text: Music
+            - switch "Music activé" [checked] [ref=e15]
+        - listitem [ref=e17]:
+          - generic [ref=e18]:
+            - text: Weather
+            - switch "Weather désactivé" [ref=e19]
+        - listitem [ref=e21]:
+          - generic [ref=e22]:
+            - text: Players
+            - switch "Players activé" [checked] [ref=e23]
+        - listitem [ref=e25]:
+          - generic [ref=e26]:
+            - text: Invites
+            - switch "Invites activé" [checked] [ref=e27]
+  - button "Open Next.js Dev Tools" [ref=e34] [cursor=pointer]:
+    - img [ref=e35]
+  - alert [ref=e38]

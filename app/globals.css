@@ -1,26 +1,425 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* -------------------------------------------------------------------------- */
+/*  Design tokens — DA "Settings Modal" (navy sombre + accent cyan).          */
+/*  Inspirée des screenshots Roblox : modal verre/glass, cartes avec léger    */
+/*  contour, toggles pill (off=dark / on=cyan), slider cyan, undo icon       */
+/*  qui apparaît dès qu'un réglage diffère du défaut.                         */
+/* -------------------------------------------------------------------------- */
+@theme {
+  /* ---- Surfaces ---- */
+  --color-bg: #050b15;
+  --color-modal: #0b1626;
+  --color-modal-edge: rgba(255, 255, 255, 0.06);
+  --color-divider: rgba(255, 255, 255, 0.08);
+
+  /* Carte : dégradé subtil top→bottom pour donner du relief. */
+  --color-card-top: #142235;
+  --color-card-bot: #0f1a2a;
+  --color-card-edge: rgba(255, 255, 255, 0.05);
+  --color-card-edge-hover: rgba(75, 220, 232, 0.25);
+
+  /* ---- Accent cyan (la couleur "active" de toute l'UI) ---- */
+  --color-accent: #1fc8d4;
+  --color-accent-hi: #4be0ec;
+  --color-accent-lo: #178995;
+  --color-accent-glow: rgba(31, 200, 212, 0.35);
+
+  /* ---- Indicateur de section (le petit trait vertical bleu) ---- */
+  --color-section-bar: #3a7bd3;
+
+  /* ---- Texte ---- */
+  --color-text: #ffffff;
+  --color-text-soft: #8aa3bd;
+  --color-text-muted: #5e7a95;
+  --color-text-dim: #4b6379;
+
+  /* ---- Knob du toggle / handle du slider ---- */
+  --color-knob: #ffffff;
+  --color-knob-shadow: rgba(0, 0, 0, 0.35);
+
+  /* ---- Typo ---- */
+  --font-display: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  --font-body: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+
+  /* ---- Rayons ---- */
+  --radius-modal: 1.75rem;
+  --radius-card: 1rem;
+  --radius-pill: 999px;
+  --radius-btn: 0.6rem;
+
+  /* ---- Easings (courbes premium) ---- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* -------------------------------------------------------------------------- */
+/*  Base                                                                       */
+/* -------------------------------------------------------------------------- */
+@layer base {
+  html,
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    /* Décor d'arrière-plan : aurore floue cyan/violette pour évoquer la */
+    /* photo derrière le modal des screenshots, sans la copier.          */
+    background:
+      radial-gradient(60% 50% at 20% 15%, rgba(31, 200, 212, 0.18), transparent 70%),
+      radial-gradient(45% 40% at 80% 80%, rgba(120, 70, 220, 0.18), transparent 70%),
+      radial-gradient(50% 45% at 50% 100%, rgba(58, 123, 211, 0.16), transparent 70%),
+      var(--color-bg);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #001016;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* -------------------------------------------------------------------------- */
+/*  Composants — briques réutilisables du design system                       */
+/* -------------------------------------------------------------------------- */
+@layer components {
+  /* ---- Modal ---- */
+  .modal {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 30%),
+      var(--color-modal);
+    border: 1px solid var(--color-modal-edge);
+    border-radius: var(--radius-modal);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.4),
+      0 32px 80px -16px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+  }
+
+  .modal-divider {
+    height: 1px;
+    background: var(--color-divider);
+    width: 100%;
+  }
+
+  /* ---- Bouton close ---- */
+  .modal-close {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-btn);
+    color: var(--color-text-soft);
+    cursor: pointer;
+    transition:
+      background 180ms var(--ease-out-soft),
+      border-color 180ms var(--ease-out-soft),
+      transform 120ms var(--ease-out-soft),
+      color 180ms var(--ease-out-soft);
+  }
+  .modal-close:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: var(--color-text);
+  }
+  .modal-close:active {
+    transform: scale(0.94);
+  }
+  .modal-close:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* ---- Label de section (le trait vertical + texte muted) ---- */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .section-label::before {
+    content: "";
+    width: 3px;
+    height: 1.05rem;
+    border-radius: 2px;
+    background: var(--color-section-bar);
+  }
+
+  /* ---- Carte d'un réglage ---- */
+  .setting-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, var(--color-card-top), var(--color-card-bot));
+    border: 1px solid var(--color-card-edge);
+    border-radius: var(--radius-card);
+    transition:
+      background 220ms var(--ease-out-soft),
+      border-color 220ms var(--ease-out-soft),
+      transform 180ms var(--ease-out-soft);
+  }
+  .setting-card:hover {
+    border-color: var(--color-card-edge-hover);
+    background: linear-gradient(180deg, #182a40, #121e30);
+  }
+  .setting-card.is-modified {
+    border-color: rgba(31, 200, 212, 0.18);
+  }
+
+  /* Flash de fond bref au moment du click. */
+  @keyframes setting-flash {
+    0% {
+      box-shadow: 0 0 0 0 rgba(31, 200, 212, 0);
+      background-color: rgba(31, 200, 212, 0);
+    }
+    25% {
+      box-shadow: 0 0 0 4px rgba(31, 200, 212, 0.18);
+      background-color: rgba(31, 200, 212, 0.08);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(31, 200, 212, 0);
+      background-color: rgba(31, 200, 212, 0);
+    }
+  }
+  .setting-card.is-flashing {
+    animation: setting-flash 420ms var(--ease-out-soft);
+  }
+
+  .setting-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  .setting-sub {
+    margin-top: 0.18rem;
+    font-size: 0.92rem;
+    color: var(--color-text-soft);
+    line-height: 1.3;
+  }
+
+  /* ---- Toggle (pill switch) ---- */
+  .toggle {
+    --w: 3.4rem;
+    --h: 1.9rem;
+    --pad: 0.22rem;
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    flex-shrink: 0;
+    border-radius: var(--radius-pill);
+    background: #1a2638;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition:
+      background 240ms var(--ease-out-soft),
+      border-color 240ms var(--ease-out-soft),
+      box-shadow 240ms var(--ease-out-soft),
+      transform 140ms var(--ease-out-soft);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  .toggle:hover {
+    transform: scale(1.04);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.4),
+      0 0 0 4px rgba(255, 255, 255, 0.04);
+  }
+  .toggle:active {
+    transform: scale(0.96);
+  }
+  .toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  .toggle[data-on="true"] {
+    background: linear-gradient(180deg, var(--color-accent-hi), var(--color-accent) 55%, var(--color-accent-lo));
+    border-color: rgba(75, 224, 236, 0.55);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(75, 224, 236, 0.18),
+      0 0 18px var(--color-accent-glow);
+  }
+  .toggle[data-on="true"]:hover {
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.25),
+      0 0 0 4px rgba(75, 224, 236, 0.12),
+      0 0 22px var(--color-accent-glow);
+  }
+
+  .toggle-knob {
+    position: absolute;
+    top: 50%;
+    left: var(--pad);
+    width: calc(var(--h) - 2 * var(--pad));
+    height: calc(var(--h) - 2 * var(--pad));
+    border-radius: 50%;
+    background: var(--color-knob);
+    transform: translateY(-50%);
+    transition:
+      left 280ms var(--ease-spring),
+      width 200ms var(--ease-out-soft);
+    box-shadow:
+      0 2px 6px var(--color-knob-shadow),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.08);
+  }
+  .toggle[data-on="true"] .toggle-knob {
+    left: calc(100% - (var(--h) - var(--pad)));
+  }
+  /* Squish léger quand on press */
+  .toggle:active .toggle-knob {
+    width: calc((var(--h) - 2 * var(--pad)) * 1.15);
+  }
+
+  /* ---- Slider ---- */
+  .slider {
+    position: relative;
+    flex: 1;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .slider-track {
+    position: relative;
+    width: 100%;
+    height: 0.32rem;
+    border-radius: var(--radius-pill);
+    background: #1a2638;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4);
+    overflow: visible;
+  }
+  .slider-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--color-accent-lo), var(--color-accent));
+    box-shadow: 0 0 10px var(--color-accent-glow);
+    transition: width 90ms linear;
+  }
+  .slider-handle {
+    position: absolute;
+    top: 50%;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background: var(--color-knob);
+    transform: translate(-50%, -50%);
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(0, 0, 0, 0.15);
+    transition:
+      transform 140ms var(--ease-out-soft),
+      box-shadow 140ms var(--ease-out-soft);
+  }
+  .slider:hover .slider-handle {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+  .slider.is-dragging .slider-handle {
+    transform: translate(-50%, -50%) scale(1.18);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.55),
+      0 0 0 6px rgba(31, 200, 212, 0.18);
+  }
+  .slider-value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-text);
+    min-width: 2.4rem;
+    text-align: right;
+  }
+
+  /* ---- Icône undo ---- */
+  .undo-btn {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    color: var(--color-text-soft);
+    background: transparent;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(6px) scale(0.85);
+    pointer-events: none;
+    transition:
+      opacity 220ms var(--ease-out-soft),
+      transform 220ms var(--ease-spring),
+      color 180ms var(--ease-out-soft),
+      background 180ms var(--ease-out-soft);
+  }
+  .undo-btn.is-visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+  }
+  .undo-btn:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .undo-btn:active {
+    transform: scale(0.9);
+  }
+  .undo-btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Animations globales                                                       */
+/* -------------------------------------------------------------------------- */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-modal-in {
+  animation: modal-in 320ms var(--ease-out-soft) both;
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-overlay-in {
+  animation: overlay-in 240ms var(--ease-out-soft) both;
+}
+
+/* Respect des prefs OS pour les motions réduites. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
